@@ -830,7 +830,7 @@ func G1MulVec(out *G1, xVec []G1, yVec []Fr) {
 	if len(xVec) != len(yVec) {
 		panic("xVec and yVec have the same size")
 	}
-	C.mclBnG1_mulVecMT(out.getPointer(), (*C.mclBnG1)(unsafe.Pointer(&xVec[0])), (*C.mclBnFr)(unsafe.Pointer(&yVec[0])), (C.size_t)(len(xVec)),0)
+	C.mclBnG1_mulVecMT(out.getPointer(), (*C.mclBnG1)(unsafe.Pointer(&xVec[0])), (*C.mclBnFr)(unsafe.Pointer(&yVec[0])), (C.size_t)(len(xVec)),128)
 }
 
 // G1MulCT -- constant time (depending on bit lengh of y)
@@ -1015,7 +1015,7 @@ func G2MulVec(out *G2, xVec []G2, yVec []Fr) {
 	if len(xVec) != len(yVec) {
 		panic("xVec and yVec have the same size")
 	}
-	C.mclBnG2_mulVecMT(out.getPointer(), (*C.mclBnG2)(unsafe.Pointer(&xVec[0])), (*C.mclBnFr)(unsafe.Pointer(&yVec[0])), (C.size_t)(len(xVec)),0)
+	C.mclBnG2_mulVecMT(out.getPointer(), (*C.mclBnG2)(unsafe.Pointer(&xVec[0])), (*C.mclBnFr)(unsafe.Pointer(&yVec[0])), (C.size_t)(len(xVec)),128)
 }
 
 // GT --
@@ -1170,7 +1170,7 @@ func MillerLoopVec(out *GT, xVec []G1, yVec []G2) {
 	if len(xVec) != len(yVec) {
 		panic("xVec and yVec have the same size")
 	}
-	C.mclBn_millerLoopVecMT(out.getPointer(), (*C.mclBnG1)(unsafe.Pointer(&xVec[0])), (*C.mclBnG2)(unsafe.Pointer(&yVec[0])), (C.size_t)(len(xVec)),64)
+	C.mclBn_millerLoopVecMT(out.getPointer(), (*C.mclBnG1)(unsafe.Pointer(&xVec[0])), (*C.mclBnG2)(unsafe.Pointer(&yVec[0])), (C.size_t)(len(xVec)),128)
 }
 
 // GetUint64NumToPrecompute --
