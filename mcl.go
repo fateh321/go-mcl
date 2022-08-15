@@ -1170,7 +1170,7 @@ func MillerLoopVec(out *GT, xVec []G1, yVec []G2) {
 	if len(xVec) != len(yVec) {
 		panic("xVec and yVec have the same size")
 	}
-	C.mclBn_millerLoopVecMT(out.getPointer(), (*C.mclBnG1)(unsafe.Pointer(&xVec[0])), (*C.mclBnG2)(unsafe.Pointer(&yVec[0])), (C.size_t)(len(xVec)),1)
+	C.mclBn_millerLoopVec(out.getPointer(), (*C.mclBnG1)(unsafe.Pointer(&xVec[0])), (*C.mclBnG2)(unsafe.Pointer(&yVec[0])), (C.size_t)(len(xVec)))
 }
 
 // GetUint64NumToPrecompute --
